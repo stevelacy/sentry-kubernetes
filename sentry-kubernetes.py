@@ -100,6 +100,9 @@ def watch_loop():
         level = (event.type and event.type.lower())
         level = LEVEL_MAPPING.get(level, level)
 
+        if level != 'error':
+            return
+
         component = source_host = reason = namespace = name = short_name = kind = None
         if event.source:
             source = event.source.to_dict()
